@@ -3,8 +3,6 @@
 A focused prototype for the loop **choose a design problem → write a design brief → submit → receive explainable feedback → revisit attempts**.
 
 The goal is not to declare one class diagram “correct”. Instead, the learner receives feedback against visible evidence in a fixed rubric: scope, responsibilities, collaboration, behaviour, and evolution.
-
-![Node]<img src="https://img.shields.io/badge/tests-node%20test-1d6b5b?style=flat-square" alt="Tests" /> ![Tests]<img src="https://img.shields.io/badge/tests-node%20test-1d6b5b?style=flat-square" alt="Tests" />
 <img width="1900" height="970" alt="image" src="https://github.com/user-attachments/assets/f73579c8-cd85-4203-a6e4-cf66515fc10f" />
 
 ## Run locally
