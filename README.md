@@ -5,6 +5,7 @@ A focused prototype for the loop **choose a design problem → write a design br
 The goal is not to declare one class diagram “correct”. Instead, the learner receives feedback against visible evidence in a fixed rubric: scope, responsibilities, collaboration, behaviour, and evolution.
 
 ![Node](https://img.shields.io/badge/Node-20%2B-3c873a?style=flat-square) ![Tests](https://img.shields.io/badge/tests-node%20test-1d6b5b?style=flat-square)
+<img width="1900" height="970" alt="image" src="https://github.com/user-attachments/assets/f73579c8-cd85-4203-a6e4-cf66515fc10f" />
 
 ## Run locally
 
