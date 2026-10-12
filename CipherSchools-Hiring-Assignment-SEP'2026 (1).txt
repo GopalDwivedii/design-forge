@@ -1,0 +1,77 @@
+﻿LLD Practice Platform
+2-Day Engineering Assignment
+The challenge
+Design and build a small practice experience that helps a learner practice Low-Level Design, submit a solution, and receive useful, explainable feedback.
+	1. Background
+LLD practice is often easy to start but difficult to evaluate. A learner can design a Parking Lot, Elevator, Vending Machine, or similar problem and still be unsure whether the responsibilities, abstractions, relationships, and trade-offs are actually good.
+We want to explore a focused product that helps learners practice LLD repeatedly and understand where their design can improve.
+2. Your Task
+Research the problem briefly, define a focused MVP, and build a working prototype of an LLD practice platform. Your solution should concentrate on the learner journey rather than on building an LMS or a large assessment system.
+A useful starting journey is:
+Practice loop
+Choose problem → Think / design → Submit → Get feedback → Review → Try again
+	3. What Your MVP Should Demonstrate
+Area
+	Expected outcome
+	Problem
+	A small set of LLD problems with clear requirements and enough context to attempt them.
+	Practice
+	A learner can start an attempt and work on a solution in a form you choose (for example text, code, diagram, or a combination).
+	Submission
+	The learner can submit a solution and see its status.
+	Feedback
+	The platform provides useful feedback on the design. AI may be used where reasoning is helpful.
+	History
+	The learner can see previous attempts so the product supports improvement, not just one-time solving.
+	Core design
+	The important domain behaviour is represented with clear classes/interfaces and responsibilities.
+	4. The Main Design Questions
+Your research and implementation should help answer these questions:
+* What does a learner actually need to provide for an LLD practice attempt to be meaningful?
+* What makes feedback useful when there can be more than one valid LLD solution?
+* Which parts of evaluation should be deterministic, and which parts benefit from an LLM?
+* How would your design accommodate another evaluation approach or another submission format later?
+* What should happen if evaluation takes time or fails? Keep this practical; do not turn the assignment into a distributed-systems project.
+5. Scope Boundary
+This is primarily an LLD/domain-design exercise. Do not spend the majority of your time on Kubernetes, microservices, multi-region deployment, sharding, CDN design, or other large-scale HLD concerns. A simple monolith is completely acceptable.
+Important distinction
+LLD focus: classes, objects, responsibilities, interfaces, behaviour, relationships, patterns, extensibility, and code-level decisions.  HLD is only a light consideration when explaining how your prototype would handle more users or slower AI evaluation.
+	6. AI Usage
+You are encouraged to use ChatGPT, Claude, Gemini, Cursor, Copilot, or similar tools. We are evaluating how well you use AI together with your own judgement—not whether you avoid AI.
+Include a short AI_USAGE.md explaining 3–5 meaningful AI-assisted decisions: what the AI suggested, what you accepted or rejected, and why.
+7. What to Submit
+Deliverable
+	What we expect
+	Research note
+	1–2 pages: learner problem, a few existing approaches/tools researched, key gaps, and your product direction.
+	Design note
+	A concise explanation of your MVP, user flow, important classes/interfaces, evaluation approach, and key trade-offs.
+	Working prototype
+	A demonstrable end-to-end practice flow from problem selection to feedback and attempt history.
+	Tests
+	Tests for important behaviour and at least a few failure/edge cases.
+	README + AI_USAGE.md
+	How to run the project, key decisions, limitations, and meaningful AI usage.
+	8. Time & Evaluation
+Time: 2 days. We expect a focused prototype, not a production-ready system.
+Evaluation area
+	Weight
+	Problem understanding & research
+	15%
+	Product thinking / creativity
+	15%
+	LLD / domain design
+	25%
+	Evaluation & feedback approach
+	15%
+	Extensibility & engineering judgement
+	10%
+	Implementation quality
+	10%
+	Testing & reliability
+	5%
+	AI usage
+	5%
+	9. Submission
+Please submit your completed requirements via this Google Form: https://docs.google.com/forms/d/e/1FAIpQLSfoHirkkjOeAYvzWksEVXSEQN5rEeD2Dyn5lPbSOkPhW65WHg/viewform?usp=publish-editor.
+LLD Practice Platform  |

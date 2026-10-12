@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Forge — LLD practice</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#practice" aria-label="Design Forge home"><span class="brand-mark"><i></i><i></i><i></i></span><span>design<span>forge</span></span></a>
+      <nav class="side-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-view-target="practice"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>Practice</button>
+        <button class="nav-link" data-view-target="history"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2M21 12a9 9 0 1 1-2.64-6.36"/></svg>My attempts</button>
+      </nav>
+      <div class="sidebar-rule"></div>
+      <section class="side-tip"><span class="eyebrow">CURRENT FORMAT</span><strong>Design brief</strong><p>Write your reasoning in a structured, reviewable form.</p><span class="tip-chip">Rubric-first feedback</span></section>
+      <div class="sidebar-bottom"><div class="avatar">AS</div><div><b id="sidebar-name">Aarav Sharma</b><small>Design learner</small></div><button id="profile-button" class="ghost-icon" title="Change learner name">···</button></div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar"><div><span class="eyebrow">PRACTICE STUDIO</span><h1 id="page-title">Make the design decisions visible.</h1></div><div class="topbar-actions"><span class="rubric-state"><span></span>Evaluator online</span><button class="outline-button" id="quick-history">View history <span>→</span></button></div></header>
+
+      <section id="practice-view" class="view active">
+        <div id="welcome-strip" class="welcome-strip"><div><span class="eyebrow">THE LOOP</span><b>Choose a problem. Explain your design. Learn from the next attempt.</b></div><div class="loop-steps"><span>01 Explore</span><i></i><span>02 Design</span><i></i><span>03 Review</span></div></div>
+        <div class="section-heading">
+          <div>
+            <div class="heading-badge-row">
+              <span class="eyebrow">PICK A BRIEF</span>
+              <span class="pick-one-pill">Pick one</span>
+            </div>
+            <h2>What will you design today?</h2>
+          </div>
+          <p>Each prompt is intentionally bounded. You’re practicing object decisions—not drawing every box.</p>
+        </div>
+        <div id="problem-grid" class="problem-grid" aria-live="polite"></div>
+
+        <!-- Animated Triad Circles on Free Space when nothing is selected, separating to sides when problem is chosen -->
+        <div id="ambient-triad" class="ambient-triad-wrapper" aria-hidden="true">
+          <div class="triad-cluster">
+            <div class="triad-circle circle-top"></div>
+            <div class="triad-circle circle-left"></div>
+            <div class="triad-circle circle-right"></div>
+          </div>
+        </div>
+
+        <section id="studio" class="studio hidden" aria-live="polite">
+          <div class="studio-header"><div><button class="back-button" id="close-studio">← All problems</button><div class="studio-title-line"><span id="studio-level" class="level-badge"></span><span id="studio-time" class="meta"></span></div><h2 id="studio-title"></h2></div><div class="studio-actions"><button class="text-button" id="load-starter">Use brief scaffold</button><button class="outline-button small" id="open-history">Attempt history <span>→</span></button></div></div>
+          <div class="studio-grid">
+            <aside class="problem-brief"><div class="brief-section"><span class="eyebrow">THE CHALLENGE</span><p id="studio-prompt"></p></div><div class="brief-section"><span class="eyebrow">DESIGN SIGNALS</span><ul id="studio-goals" class="check-list"></ul></div><div class="brief-section"><span class="eyebrow">CONSTRAINTS</span><ul id="studio-constraints" class="constraint-list"></ul></div><div class="brief-footer">There is no single right class diagram. Make your trade-offs inspectable.</div></aside>
+            <section class="editor-panel">
+              <div class="editor-top">
+                <div><span class="eyebrow">YOUR DESIGN</span><p>Use objects, responsibilities, flows, and trade-offs as evidence.</p></div>
+                <span id="word-count" class="word-count">0 words</span>
+              </div>
+              <textarea id="design-content" spellcheck="true" placeholder="Start with the boundary of the problem. What does each object own? How do they collaborate when something goes wrong?"></textarea>
+              
+              <div class="diagram-upload-section">
+                <div class="diagram-upload-header">
+                  <div>
+                    <span class="eyebrow">DIAGRAM ARTIFACTS</span>
+                    <strong style="display:block;font-size:12px;margin-top:2px;">Attach Class, Activity, or Use Case diagrams (PNG, JPG, WebP, SVG)</strong>
+                  </div>
+                  <label class="outline-button small upload-label" for="diagram-file-input">
+                    + Upload diagram images
+                    <input type="file" id="diagram-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml" multiple style="display:none;" />
+                  </label>
+                </div>
+                <div id="diagram-previews" class="diagram-preview-list"></div>
+              </div>
+
+              <div class="editor-footer">
+                <div class="writing-hint"><span class="pulse-dot"></span><span id="writing-hint">Feedback works best with a concrete flow and one edge case.</span></div>
+                <button id="submit-attempt" class="primary-button">Submit for review <span>↗</span></button>
+              </div>
+            </section>
+          </div>
+          <section id="review-panel" class="review-panel hidden"></section>
+        </section>
+      </section>
+
+      <section id="history-view" class="view">
+        <div class="history-hero"><div><span class="eyebrow">YOUR DESIGN TRAIL</span><h2>Every attempt is evidence.</h2><p>Compare what you chose, what the rubric could see, and which design habit to strengthen next.</p></div><button class="primary-button" id="new-practice">Start a new brief <span>↗</span></button></div>
+        <div id="history-summary" class="history-summary"></div>
+        <div class="history-layout"><section><div class="section-heading compact"><div><span class="eyebrow">SAVED ATTEMPTS</span><h2>Your review queue</h2></div></div><div id="attempt-list" class="attempt-list"></div></section><aside id="attempt-detail" class="attempt-detail"><div class="empty-detail"><span class="empty-orb">◌</span><h3>Choose an attempt</h3><p>Its rubric feedback and submitted design will appear here.</p></div></aside></div>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="name-modal" class="modal-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="name-modal-title"><form id="name-form" class="modal"><button type="button" id="close-modal" class="modal-close">×</button><span class="eyebrow">YOUR PRACTICE SPACE</span><h2 id="name-modal-title">What should we call you?</h2><p>This name stays in your browser and labels your local attempt trail.</p><input id="learner-name" maxlength="40" required /><button class="primary-button" type="submit">Save and continue <span>→</span></button></form></div>
+
+  <!-- Custom Problem Modal -->
+  <div id="custom-brief-modal" class="modal-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="custom-brief-title">
+    <form id="custom-brief-form" class="modal custom-brief-modal-card">
+      <button type="button" id="close-custom-brief-modal" class="modal-close">×</button>
+      <span class="eyebrow">CUSTOM PRACTICE BRIEF</span>
+      <h2 id="custom-brief-title">Design Your Own Brief</h2>
+      <p>Craft a tailor-made software architecture challenge to practice any domain or system model.</p>
+      
+      <div class="custom-field-group">
+        <label for="custom-title-input">Title</label>
+        <input id="custom-title-input" placeholder="e.g. Distributed Rate Limiter, Cache System" required maxlength="60" />
+      </div>
+
+      <div class="custom-row-group">
+        <div class="custom-field-group">
+          <label for="custom-level-select">Complexity Level</label>
+          <select id="custom-level-select" class="custom-select">
+            <option value="Foundational">Foundational</option>
+            <option value="Intermediate" selected>Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="custom-field-group">
+          <label for="custom-duration-input">Duration (Mins)</label>
+          <input id="custom-duration-input" type="number" min="10" max="120" value="30" required />
+        </div>
+      </div>
+
+      <div class="custom-field-group">
+        <label for="custom-tags-input">Tags (comma-separated)</label>
+        <input id="custom-tags-input" placeholder="e.g. Concurrency, Token Bucket, Scale" />
+      </div>
+
+      <div class="custom-field-group">
+        <label for="custom-prompt-input">The Challenge / Prompt</label>
+        <textarea id="custom-prompt-input" rows="3" placeholder="Explain the core challenge and requirements..." required></textarea>
+      </div>
+
+      <div class="custom-field-group">
+        <label for="custom-signals-input">Design Signals (one per line)</label>
+        <textarea id="custom-signals-input" rows="2" placeholder="e.g. Separate allocation policy from storage&#10;Handle rate burst limits"></textarea>
+      </div>
+
+      <div class="custom-field-group">
+        <label for="custom-constraints-input">Constraints (one per line)</label>
+        <textarea id="custom-constraints-input" rows="2" placeholder="e.g. In-memory data store&#10;Thread-safe operations"></textarea>
+      </div>
+
+      <div class="custom-modal-actions">
+        <button class="primary-button" type="submit">Create &amp; Enter Studio <span>→</span></button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Photo Review Modal for inspecting uploaded diagram images and structural analysis -->
+  <div id="photo-review-modal" class="modal-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="photo-review-title">
+    <div class="photo-modal">
+      <button type="button" id="close-photo-modal" class="modal-close">×</button>
+      <div class="photo-modal-header">
+        <span class="eyebrow" id="photo-review-eyebrow">DIAGRAM INSPECTION</span>
+        <h2 id="photo-review-title">Photo Review</h2>
+      </div>
+      <div class="photo-modal-body">
+        <div class="photo-preview-stage">
+          <img id="photo-review-img" src="" alt="Diagram Review" />
+        </div>
+        <div class="photo-review-sidebar">
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">DIAGRAM TYPE</span>
+            <span id="photo-review-type" class="review-meta-badge">Class Diagram</span>
+          </div>
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">FILENAME &amp; RESOLUTION</span>
+            <span id="photo-review-filename" class="review-meta-text">diagram.png</span>
+            <small id="photo-review-size" class="review-meta-sub">0 KB</small>
+          </div>
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">VISUAL FIDELITY &amp; CLARITY</span>
+            <span id="photo-review-clarity" class="review-meta-badge badge-good">High visual fidelity</span>
+          </div>
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">STRUCTURAL FINDINGS</span>
+            <p id="photo-review-summary" class="review-summary-text"></p>
+          </div>
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">DETECTED COMPONENTS</span>
+            <ul id="photo-review-elements" class="review-elements-list"></ul>
+          </div>
+          <div class="review-sidebar-section">
+            <span class="review-meta-label">CAPTION / REMARKS</span>
+            <p id="photo-review-caption" class="review-caption-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
